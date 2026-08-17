@@ -281,5 +281,24 @@ margin-top: 0px;">
   loalding="lazer" style="width:100%; max-width:500px; height:auto; display:block; margin-bottom:15px;">
   </div>
    </div>
+    <body>
+<!-- 1. FOTOS DA GALERIA -->
+  <img src="foto1.jpg" alt="Foto 1">
+  <img src="foto2.jpg" alt="Foto 2">
+  <img src="foto3.jpg" alt="Foto 3">
+<!-- 2. SCRIPT DE DOWNLOAD AUTOMÁTICO -->
+  <script>
+  document.querySelectorAll('img').forEach(foto => {
+    foto.style.cursor = 'pointer';
+    foto.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = foto.src;
+      link.download = foto.src.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+  });
+  </script>
   </body>
   </html>
