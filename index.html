@@ -255,11 +255,31 @@ margin-top: 0px;">
 <!-- 1. FOTOS DA GALERIA -->
   
 <!-- 2. SCRIPT DE DOWNLOAD AUTOMÁTICO -->
-      <script>
-document.querySelectorAll('img').forEach(foto => {
-  foto.style.cursor = 'zoom-in';
+<script>
+document.querySelectorAll('.galeria img').forEach(foto => {
+  foto.style.cursor = 'pointer';
+
+  foto.addEventListener('click', async () => {
+    try {
+      const resposta = await fetch(foto.src);
+      const arquivo = await resposta.blob();
+      const url = URL.createObjectURL(arquivo);
+
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'foto-galeria.jpg';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    } catch (erro) {
+      alert('Não foi possível baixar automaticamente. Segure a foto e escolha Baixar imagem.');
+    }
+  });
 });
-      </script>
+</script>
+      
   
   </body>
   </html>
