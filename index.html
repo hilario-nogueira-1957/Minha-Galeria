@@ -255,18 +255,6 @@ margin-top: 0px;">
 <!-- 1. FOTOS DA GALERIA -->
   
 <!-- 2. SCRIPT DE DOWNLOAD AUTOMÁTICO -->
-  <script>
-  document.querySelectorAll('img').forEach(foto => {
-    foto.style.cursor = 'pointer';
-    foto.addEventListener('click', () => {
-      const link = document.createElement('a');
-      link.href = foto.src;
-      link.download = foto.src.split('/').pop();
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    });
-  });
-  </script>
+  
   </body>
   </html>
